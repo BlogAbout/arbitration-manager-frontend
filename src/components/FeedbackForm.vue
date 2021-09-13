@@ -1,5 +1,6 @@
 <template>
-    <div class="feedback-form">
+    <div v-if="submitted" class="submit-success">{{ submitted }}</div>
+    <div v-else class="feedback-form">
         <div class="form-description">Остались вопросы? Закажите обратный звонок!</div>
         <form name="form-feedback" action="" method="post" @submit.prevent="submitHandler">
             <div class="field">
@@ -25,6 +26,9 @@
                     class="validate"
                     placeholder="Ваш номер телефона"
                     v-model.trim="phone"
+                    v-phone
+                    autocomplete="tel"
+                    maxlength="18"
                     :class="{invalid: ($v.phone.$dirty && !$v.phone.required)}"
                 />
                 <span
@@ -36,6 +40,7 @@
                 <input type="submit" value="Заказать звонок" />
             </div>
         </form>
+        <div v-if="errors" class="errors">{{ errors }}</div>
     </div>
 </template>
 
@@ -46,7 +51,9 @@ export default {
     name: 'FeedbackForm',
     data: () => ({
         name: '',
-        phone: ''
+        phone: '',
+        errors: '',
+        submitted: ''
     }),
     validations: {
         name: {
@@ -58,6 +65,9 @@ export default {
     },
     methods: {
         async submitHandler() {
+            this.submitted = ''
+            this.errors = ''
+
             if (this.$v.$invalid) {
                 this.$v.$touch()
                 return
@@ -67,9 +77,14 @@ export default {
                 name: this.name,
                 phone: this.phone
             }
-            console.log(formData)
 
-            // Шлем на почту заявку
+            await this.$store.dispatch('callback', formData)
+                .then((response) => {
+                    this.submitted = response.data
+                })
+                .catch((error) => {
+                    this.errors = error.message
+                })
         }
     }
 }

@@ -893,6 +893,14 @@ form .col.col-2 {
     width: 49%;
 }
 
+.submit-success {
+    padding: 5px;
+    border: 1px solid #00ff00;
+    text-align: center;
+    color: #00ff00;
+    margin-bottom: 20px;
+}
+
 .errors {
     padding: 5px;
     border: 1px solid #ff0000;
