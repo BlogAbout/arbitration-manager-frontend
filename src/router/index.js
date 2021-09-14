@@ -11,6 +11,7 @@ const routes = [
         name: 'Home',
         meta: {
             title: 'Арбитражный управляющий',
+            description: 'Евгения Марченко – арбитражный управляющий. Такой специалист назначается арбитражным судом с целью проведения процедуры банкротства несостоятельной организации или физического лица.',
             nonRequiresAuth: true
         },
         component: () => import('../views/Main.vue')
@@ -20,6 +21,7 @@ const routes = [
         name: 'Login',
         meta: {
             title: 'Вход',
+            description: 'Вход в личный кабинет для юридических и физических лиц',
             nonRequiresAuth: true
         },
         component: () => import('../views/profile/Login.vue')
@@ -29,6 +31,7 @@ const routes = [
         name: 'Registration',
         meta: {
             title: 'Регистрация',
+            description: 'Регистрация личного кабинета для юридических и физических лиц',
             nonRequiresAuth: true
         },
         component: () => import('../views/profile/Registration.vue')
@@ -37,7 +40,8 @@ const routes = [
         path: '/forgot',
         name: 'Forgot',
         meta: {
-            title: 'Восстановление пароля',
+            title: 'Восстановление пароля к личному кабинету для юридических и физических лиц',
+            description: 'Восстановление пароля',
             nonRequiresAuth: true
         },
         component: () => import('../views/profile/Forgot.vue')
@@ -46,7 +50,8 @@ const routes = [
         path: '/profile',
         name: 'Profile',
         meta: {
-            title: 'Личный кабинет'
+            title: 'Личный кабинет',
+            description: 'Личный кабинет'
         },
         component: () => import('../views/profile/Profile.vue')
     },
@@ -54,7 +59,8 @@ const routes = [
         path: '/profile/edit',
         name: 'ProfileEdit',
         meta: {
-            title: 'Редактирование личных данных'
+            title: 'Редактирование личных данных',
+            description: 'Редактирование личных данных'
         },
         component: () => import('../views/profile/ProfileEdit.vue')
     },
@@ -63,6 +69,7 @@ const routes = [
         name: 'BankruptcyEntities',
         meta: {
             title: 'Банкротство юридических лиц',
+            description: 'Банкротство юридических лиц - длительная процедура. Ее необходимо грамотно организовать, чтобы удовлетворить претензии кредиторов и сохранить по максимуму имущество, насколько это возможно.',
             nonRequiresAuth: true
         },
         component: () => import('../views/BankruptcyEntities.vue')
@@ -72,6 +79,7 @@ const routes = [
         name: 'BankruptcyIndividual',
         meta: {
             title: 'Банкротство физических лиц',
+            description: 'Процесс банкротства физических лиц',
             nonRequiresAuth: true
         },
         component: () => import('../views/BankruptcyIndividual.vue')
@@ -81,6 +89,7 @@ const routes = [
         name: 'Property',
         meta: {
             title: 'Имущество',
+            description: 'Распродаваемое имущество физических и юридических лиц в процессе банкротства',
             nonRequiresAuth: true
         },
         component: () => import('../views/property/Property.vue')
@@ -89,7 +98,8 @@ const routes = [
         path: '/property/add',
         name: 'PropertyAdd',
         meta: {
-            title: 'Новое имущество'
+            title: 'Новое имущество',
+            description: 'Новое имущество'
         },
         component: () => import('../views/property/PropertyAdd.vue'),
     },
@@ -98,6 +108,7 @@ const routes = [
         name: 'PropertyEdit',
         meta: {
             title: 'Редактировать имущество',
+            description: 'Редактировать имущество'
         },
         component: () => import('../views/property/PropertyAdd.vue'),
     },
@@ -106,6 +117,7 @@ const routes = [
         name: 'PropertyInfo',
         meta: {
             title: 'Имущество',
+            description: 'Распродаваемое имущество физических и юридических лиц в процессе банкротства',
             nonRequiresAuth: true
         },
         component: () => import('../views/property/PropertyInfo.vue')
@@ -115,6 +127,7 @@ const routes = [
         name: 'Question',
         meta: {
             title: 'Вопросы',
+            description: 'Вопросы и ответы на часто задаваемые вопросы о банкротстве юридических и физических лиц',
             nonRequiresAuth: true
         },
         component: () => import('../views/question/Question.vue')
@@ -123,7 +136,8 @@ const routes = [
         path: '/question/add',
         name: 'QuestionAdd',
         meta: {
-            title: 'Новый вопрос'
+            title: 'Новый вопрос',
+            description: 'Новый вопрос'
         },
         component: () => import('../views/question/QuestionAdd.vue'),
     },
@@ -132,6 +146,7 @@ const routes = [
         name: 'QuestionEdit',
         meta: {
             title: 'Редактировать вопрос',
+            description: 'Редактировать вопрос',
         },
         component: () => import('../views/question/QuestionAdd.vue'),
     },
@@ -140,6 +155,7 @@ const routes = [
         name: 'Education',
         meta: {
             title: 'Обучение',
+            description: 'Обучение у арбитражного управляющего на банкротство физических и юридических лиц',
             nonRequiresAuth: true
         },
         component: () => import('../views/Education.vue')
@@ -149,6 +165,7 @@ const routes = [
         name: 'Contacts',
         meta: {
             title: 'Контакты',
+            description: 'Контакты арбитражного управляющего',
             nonRequiresAuth: true
         },
         component: () => import('../views/Contacts.vue')
@@ -158,6 +175,7 @@ const routes = [
         name: 'City',
         meta: {
             title: 'Работаем с городами',
+            description: 'Работаем с городами',
             nonRequiresAuth: true
         },
         component: () => import('../views/city/City.vue')
@@ -167,6 +185,7 @@ const routes = [
         name: 'CityInfo',
         meta: {
             title: 'Работаем с городами',
+            description: 'Работаем с городами',
             nonRequiresAuth: true
         },
         component: () => import('../views/city/CityInfo.vue')
@@ -175,7 +194,8 @@ const routes = [
         path: '/policy',
         name: 'Policy',
         meta: {
-            title: 'Контакты',
+            title: 'Политика конфиденциальности',
+            description: 'Политика конфиденциальности',
             nonRequiresAuth: true
         },
         component: () => import('../views/Policy.vue')
@@ -184,11 +204,23 @@ const routes = [
         path: '/terms',
         name: 'Terms',
         meta: {
-            title: 'Контакты',
+            title: 'Условия использования',
+            description: 'Условия использования',
             nonRequiresAuth: true
         },
         component: () => import('../views/Terms.vue')
     },
+    {
+        path: '/404',
+        alias: '*',
+        name: 'NotFound',
+        meta: {
+            title: '404 - Страница не найдена',
+            description: '',
+            nonRequiresAuth: true
+        },
+        component: () => import('../views/NotFound.vue')
+    }
 ]
 
 const router = new VueRouter({
@@ -211,13 +243,14 @@ router.afterEach(() => {
 })
 
 router.beforeEach((to, from, next) => {
-    const { title } = to.meta
+    const { title, description } = to.meta
     const brand = 'Арбитражный управляющий'
 
     if (to.matched.some(route => !route.meta.nonRequiresAuth)) {
         if (localStorage.getItem('AuthState')) {
             next()
             document.title = `${title ? title + ' | ' : ''}${brand}`
+            document.querySelector('meta[name="description"]').setAttribute("content", `${description ? description : ''}`)
             return
         } else {
             next('/?message=not-auth')
@@ -227,6 +260,7 @@ router.beforeEach((to, from, next) => {
     }
 
     document.title = `${title ? title + ' | ' : ''}${brand}`
+    document.querySelector('meta[name="description"]').setAttribute("content", `${description ? description : ''}`)
 })
 
 export default router

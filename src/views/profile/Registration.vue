@@ -200,9 +200,10 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col col-2">
+                            <div class="col" :class="{'col-2': !loading}">
                                 <div class="field">
-                                    <input type="submit" value="Регистрация" />
+                                    <input v-if="!loading" type="submit" value="Регистрация" />
+                                    <loader v-else />
                                 </div>
                             </div>
                         </div>
@@ -225,9 +226,10 @@
                                     >Укажите код из СМС</span>
                                 </div>
                             </div>
-                            <div class="col col-2">
+                            <div class="col" :class="{'col-2': !loading}">
                                 <div class="field">
-                                    <input type="submit" value="Подтвердить" />
+                                    <input v-if="!loading" type="submit" value="Подтвердить" />
+                                    <loader v-else />
                                 </div>
                             </div>
                         </div>
@@ -244,10 +246,20 @@
 </template>
 
 <script>
+import Loader from '../../components/Loader'
+import { mapGetters } from 'vuex'
 import { email, required, requiredIf, minLength } from 'vuelidate/dist/validators.min'
 
 export default {
     name: 'Registration',
+    components: {
+        Loader
+    },
+    computed: {
+        ...mapGetters({
+            loading: 'getLoading'
+        })
+    },
     data: () => ({
         username: '',
         password: '',

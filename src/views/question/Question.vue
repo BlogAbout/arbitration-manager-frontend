@@ -11,7 +11,7 @@
                             class="btn btn-right"
                         >Добавить новый</router-link>
                     </h1>
-                    <div class="list-items list-question">
+                    <div v-if="question" class="list-items list-question">
                         <div
                             v-for="(item, index) in question"
                             :key="'question-item-' + index"
@@ -30,6 +30,7 @@
                             <div class="question-item-answer">{{ item.answer }}</div>
                         </div>
                     </div>
+                    <loader v-else-if="loading" />
                 </div>
             </div>
         </section>
@@ -37,17 +38,22 @@
 </template>
 
 <script>
+import Loader from '../../components/Loader'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
     name: 'Question',
+    components: {
+        Loader
+    },
     computed: {
         ...mapState({
             isAuthenticated: state => state.authenticated
         }),
         ...mapGetters({
             question: 'getQuestion',
-            authorities: 'getAuthorities'
+            authorities: 'getAuthorities',
+            loading: 'getLoading'
         })
     },
     mounted() {

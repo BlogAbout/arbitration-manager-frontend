@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const SERVER_URL = 'http://localhost:9000/api/v1';
-//const SERVER_URL = 'https://arbitration-manager.herokuapp.com/api/v1';
+//const SERVER_URL = 'http://localhost:9000/api/v1';
+const SERVER_URL = 'https://arbitration-manager.herokuapp.com/api/v1';
 
 const AXIOS = axios.create({
     baseURL: SERVER_URL,
-    timeout: 5000,
+    timeout: 15000,
     withCredentials: false
 })
 

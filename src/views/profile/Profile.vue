@@ -59,7 +59,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="user-information">
+                    <div v-if="userInfo" class="user-information">
                         <h3>
                             <span>Документы</span>
                             <router-link to="/profile/documents" class="link-small" title="Редактировать">
@@ -85,7 +85,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="user-information">
+                    <div v-if="userInfo" class="user-information">
                         <h3>
                             <span>Состояние</span>
                             <router-link to="/profile/state" class="link-small" title="Подробнее">
@@ -107,6 +107,7 @@
                             </div>
                         </div>
                     </div>
+                    <loader v-if="loading" />
                 </div>
             </div>
         </section>
@@ -114,13 +115,18 @@
 </template>
 
 <script>
+import Loader from '../../components/Loader'
 import { mapGetters } from 'vuex'
 
 export default {
     name: 'Profile',
+    components: {
+        Loader
+    },
     computed: {
         ...mapGetters({
-            userInfo: 'getCurrentUser'
+            userInfo: 'getCurrentUser',
+            loading: 'getLoading'
         })
     },
     data: () => ({

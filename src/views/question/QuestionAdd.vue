@@ -40,9 +40,10 @@
                                     >Поле не должно быть пустым</span>
                                 </div>
                             </div>
-                            <div class="col col-2">
+                            <div class="col" :class="{'col-2': !loading}">
                                 <div class="field">
-                                    <input type="submit" :value="currentId === 0 ? 'Добавить' : 'Обновить'" />
+                                    <input v-if="!loading" type="submit" :value="currentId === 0 ? 'Добавить' : 'Обновить'" />
+                                    <loader v-else />
                                 </div>
                             </div>
                         </div>
@@ -59,10 +60,20 @@
 </template>
 
 <script>
+import Loader from '../../components/Loader'
+import { mapGetters } from 'vuex'
 import { required } from 'vuelidate/dist/validators.min'
 
 export default {
     name: 'Login',
+    components: {
+        Loader
+    },
+    computed: {
+        ...mapGetters({
+            loading: 'getLoading'
+        })
+    },
     data: () => ({
         currentId: 0,
         question: '',

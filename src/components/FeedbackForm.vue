@@ -37,7 +37,8 @@
                 >Поле Телефон не должно быть пустым</span>
             </div>
             <div class="field">
-                <input type="submit" value="Заказать звонок" />
+                <input v-if="!loading" type="submit" value="Заказать звонок" />
+                <loader v-else />
             </div>
         </form>
         <div v-if="errors" class="errors">{{ errors }}</div>
@@ -45,10 +46,20 @@
 </template>
 
 <script>
+import Loader from './Loader'
+import { mapGetters } from 'vuex'
 import { required } from 'vuelidate/dist/validators.min'
 
 export default {
     name: 'FeedbackForm',
+    components: {
+        Loader
+    },
+    computed: {
+        ...mapGetters({
+            loading: 'getLoading'
+        })
+    },
     data: () => ({
         name: '',
         phone: '',

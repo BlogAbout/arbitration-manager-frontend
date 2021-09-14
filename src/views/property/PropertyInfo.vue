@@ -24,22 +24,28 @@
                     </div>
                     <div class="property-description">{{ property.description }}</div>
                 </div>
+                <loader v-else-if="loading" />
             </div>
         </section>
     </main>
 </template>
 
 <script>
+import Loader from '../../components/Loader'
 import { mapGetters } from 'vuex'
 
 export default {
     name: 'PropertyInfo',
+    components: {
+        Loader
+    },
     data: () => ({
         currentId: 0,
     }),
     computed: {
         ...mapGetters({
-            property: 'getCurrentProperty'
+            property: 'getCurrentProperty',
+            loading: 'getLoading'
         })
     },
     mounted() {

@@ -11,7 +11,7 @@
                             class="btn btn-right"
                         >Добавить новое</router-link>
                     </h1>
-                    <div class="list-items list-property">
+                    <div v-if="property" class="list-items list-property">
                         <div class="row row-stretch row-wrap">
                             <div
                                 v-for="(item, index) in property"
@@ -40,6 +40,7 @@
                             </div>
                         </div>
                     </div>
+                    <loader v-else-if="loading" />
                 </div>
             </div>
         </section>
@@ -47,17 +48,22 @@
 </template>
 
 <script>
+import Loader from '../../components/Loader'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
     name: 'Property',
+    components: {
+        Loader
+    },
     computed: {
         ...mapState({
             isAuthenticated: state => state.authenticated
         }),
         ...mapGetters({
             property: 'getProperty',
-            authorities: 'getAuthorities'
+            authorities: 'getAuthorities',
+            loading: 'getLoading'
         })
     },
     mounted() {

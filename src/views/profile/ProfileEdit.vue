@@ -216,9 +216,10 @@
                             </div>
                         </div>
                         <div class="row row-wrap row-space">
-                            <div class="col col-2">
+                            <div class="col" :class="{'col-2': !loading}">
                                 <div class="field">
-                                    <input type="submit" value="Сохранить изменения" />
+                                    <input v-if="!loading" type="submit" value="Сохранить изменения" />
+                                    <loader v-else />
                                 </div>
                             </div>
                         </div>
@@ -235,10 +236,20 @@
 </template>
 
 <script>
+import Loader from '../../components/Loader'
+import { mapGetters } from 'vuex'
 import { email, required, requiredIf } from 'vuelidate/dist/validators.min'
 
 export default {
     name: 'ProfileEdit',
+    components: {
+        Loader
+    },
+    computed: {
+        ...mapGetters({
+            loading: 'getLoading'
+        })
+    },
     mounted() {
         this.currentLogin = this.$store.getters.getUsername
         this.$store.dispatch("userInfo", this.currentLogin)
