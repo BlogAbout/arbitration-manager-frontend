@@ -30,7 +30,7 @@
                                     </a>
                                 </div>
                                 <div class="item-image">
-                                    <img :src="item.image ? '/uploads/' + item.image : '/images/noimage.jpg'" :alt="item.name" />
+                                    <img :src="item.image ? '/uploads/property/' + item.image : '/images/noimage.jpg'" :alt="item.name" />
                                 </div>
                                 <div class="item-title">{{ item.name }}</div>
                                 <div class="row row-stretch">

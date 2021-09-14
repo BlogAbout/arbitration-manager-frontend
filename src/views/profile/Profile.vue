@@ -25,7 +25,7 @@
                                 <span class="param-label">Имя:</span>
                                 <span class="param-value">{{ userInfo.firstName }}</span>
                             </div>
-                            <div class="param">
+                            <div v-if="!userInfo.noMiddleName" class="param">
                                 <span class="param-label">Отчество:</span>
                                 <span class="param-value">{{ userInfo.middleName }}</span>
                             </div>

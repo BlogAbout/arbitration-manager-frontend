@@ -68,7 +68,7 @@
                                         />
                                         <a href="#" @click.prevent="selectPic">
                                             <img v-if="filePreview" :src="filePreview" :alt="name" />
-                                            <img v-else-if="image" :src="'/uploads/' + image" :alt="name" />
+                                            <img v-else-if="image" :src="'/uploads/property/' + image" :alt="name" />
                                             <img v-else src="../../assets/images/noimage.jpg" :alt="name" />
                                         </a>
                                     </div>
