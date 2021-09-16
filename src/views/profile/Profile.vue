@@ -68,20 +68,30 @@
                         </h3>
                         <div class="user-information-list">
                             <div class="param">
-                                <span class="param-label">Паспорт:</span>
-                                <span class="param-value">Добавлено</span>
+                                <span class="param-label">Информация о гражданине:</span>
+                                <span class="param-value">
+                                    <router-link to="/profile/documents/passport">Заполнить</router-link>
+                                </span>
                             </div>
                             <div class="param">
                                 <span class="param-label">ИНН:</span>
-                                <span class="param-value"><router-link to="/profile/documents">Загрузить</router-link></span>
+                                <span class="param-value"><router-link to="/profile/documents">Заполнить</router-link></span>
                             </div>
                             <div class="param">
                                 <span class="param-label">Реквизиты:</span>
-                                <span class="param-value">Добавлено</span>
+                                <span class="param-value"><router-link to="/profile/documents">Заполнить</router-link></span>
+                            </div>
+                            <div class="param">
+                                <span class="param-label">Опись имущества:</span>
+                                <span class="param-value"><router-link to="/profile/documents">Заполнить</router-link></span>
+                            </div>
+                            <div class="param">
+                                <span class="param-label">Список кредиторов и должников:</span>
+                                <span class="param-value"><router-link to="/profile/documents">Заполнить</router-link></span>
                             </div>
                             <div class="param">
                                 <span class="param-label">Другое:</span>
-                                <span class="param-value"><router-link to="/profile/documents">Загрузить</router-link></span>
+                                <span class="param-value"><router-link to="/profile/documents">Заполнить</router-link></span>
                             </div>
                         </div>
                     </div>

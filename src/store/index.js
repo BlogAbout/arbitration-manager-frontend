@@ -9,6 +9,7 @@ import getters from './getters';
 import AuthModule from './modules/auth'
 import QuestionModule from './modules/question'
 import PropertyModule from './modules/property'
+import UserModule from './modules/user'
 
 Vue.use(Vuex)
 
@@ -20,6 +21,7 @@ export default new Vuex.Store({
     modules: {
         AuthModule,
         QuestionModule,
-        PropertyModule
+        PropertyModule,
+        UserModule
     }
 })

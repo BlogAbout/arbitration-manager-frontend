@@ -9,6 +9,9 @@ const mutations = {
         localStorage.setItem('AuthState', auth)
         state.authenticated = auth
     },
+    setPing(state, date) {
+        state.ping = date
+    }
 };
 
 export default mutations;

@@ -83,7 +83,7 @@
                             </div>
                             <div class="col col-2" v-if="entity">
                                 <div class="field">
-                                    <label for="firstName">Компания</label>
+                                    <label for="companyName">Компания</label>
                                     <input
                                         id="companyName"
                                         type="text"
@@ -101,7 +101,7 @@
                             </div>
                             <div class="col col-2" v-if="entity">
                                 <div class="field">
-                                    <label for="firstName">ИНН</label>
+                                    <label for="inn">ИНН</label>
                                     <input
                                         id="inn"
                                         type="text"
@@ -119,7 +119,7 @@
                             </div>
                             <div class="col col-2" v-if="entity">
                                 <div class="field">
-                                    <label for="firstName">КПП</label>
+                                    <label for="kpp">КПП</label>
                                     <input
                                         id="kpp"
                                         type="text"
@@ -137,7 +137,7 @@
                             </div>
                             <div class="col col-2" v-if="entity">
                                 <div class="field">
-                                    <label for="firstName">ОГРН</label>
+                                    <label for="ogrn">ОГРН</label>
                                     <input
                                         id="ogrn"
                                         type="text"

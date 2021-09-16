@@ -19,6 +19,22 @@ const actions = {
                     reject(error)
                 })
         })
+    },
+    checkPing({ commit, state }) {
+        const dateNow = new Date()
+
+        if (state.ping == null) {
+            commit('setPing', dateNow)
+            this._vm.$axios.get('/helper/ping')
+        } else {
+            const dateOld = new Date(state.ping)
+            const minutes = Math.ceil(Math.abs(dateOld.getTime() - dateNow.getTime())) / (1000 * 3600)
+            if (minutes > 15) {
+                commit('setPing', dateNow)
+                this._vm.$axios.get('/helper/ping')
+            }
+            console.log(minutes)
+        }
     }
 };
 

@@ -46,6 +46,8 @@ export default {
     }),
     mounted() {
         this.id = this.$route.params.id || 0
+        if (this.id >= this.cityList.length)
+            this.$router.push('/city')
     }
 }
 </script>

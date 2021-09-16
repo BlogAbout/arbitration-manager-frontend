@@ -122,6 +122,7 @@ export default {
         })
     },
     data: () => ({
+        intervalTimer: null,
         mobileMenuShow: false,
         menuHeader: [
             {title: 'Арбитражный управляющий', url: '/'},
@@ -161,6 +162,17 @@ export default {
         goToTop() {
             window.scrollTo(0, 0);
         }
+    },
+    mounted() {
+        this.$store.dispatch('checkPing')
+        this.intervalTimer = setInterval(() => {
+            this.$store.dispatch('checkPing')
+        }, 900000)
+
+        this.$once('hook:beforeDestroy', function() {
+            if (this.intervalTimer)
+                clearInterval(this.intervalTimer)
+        })
     }
 }
 </script>

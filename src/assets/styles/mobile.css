@@ -20,6 +20,9 @@
         padding: 40px 10px 40px 40px;
     }
 
+    .payment-block,
+    .program-block,
+    .advanced-information-block,
     .information-block {
         padding: 80px 10px;
     }
@@ -34,6 +37,15 @@
 
     .property-information {
         padding: 0 10px 0 30px;
+    }
+
+    .education-profession .slogan-block .row {
+        transform: none;
+    }
+
+    .who-block,
+    .result-block {
+        padding: 0 10px;
     }
 }
 
@@ -99,6 +111,38 @@
         margin-bottom: 20px;
     }
 
+    .education-profession .slogan-block .main-title {
+        font-size: 30px;
+    }
+
+    .plans-block,
+    .why-block,
+    .payment-block,
+    .program-block,
+    .advanced-information-block,
+    .information-block {
+        padding: 40px 10px;
+    }
+
+    .result-block .result-block-inner,
+    .who-block .who-block-inner {
+        padding: 40px 0;
+    }
+
+    .plans-block .row {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .plans-block .col-3,
+    .why-block .col-3 {
+        width: 50%;
+    }
+
+    .plans-block .col-3 {
+        margin-bottom: 20px;
+    }
+
     .diplomas-block {
         padding: 40px 0;
     }
@@ -145,6 +189,17 @@
 
     .information-block {
         padding: 20px;
+    }
+
+    .why-block h2,
+    .program-block h2,
+    .result-block h2,
+    .who-block h2,
+    .who-block h3,
+    .plans-block h2 {
+        font-size: 30px;
+        line-height: 36px;
+        margin-bottom: 20px;
     }
 }
 
@@ -239,6 +294,81 @@
     .city-list {
         column-count: 2;
     }
+
+    .education-profession .slogan-block .col-2:first-child {
+        display: none;
+    }
+
+    .education-profession .slogan-block .col-2 {
+        width: 100%;
+    }
+
+    .why-block h2,
+    .program-block h2,
+    .result-block h2,
+    .who-block h2,
+    .who-block h3,
+    .plans-block h2,
+    .program-block .item-content h3,
+    .program-block .item-content h4 {
+        font-size: 20px;
+        line-height: 26px;
+        margin-bottom: 20px;
+    }
+
+    .result-block .item-content,
+    .program-block .item-content p,
+    .advanced-information-block .advanced-information-block-inner p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .payment-block p,
+    .who-block .who-info li,
+    .why-block .item .item-text,
+    .who-block .block-description {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .program-block .item-number {
+        width: 100px;
+        height: 100px;
+    }
+
+    .program-block .item-number span {
+        font-size: 60px;
+        line-height: 66px;
+    }
+
+    .result-block .item-content,
+    .program-block .item-content {
+        padding-left: 40px;
+        width: calc(100% - 100px);
+    }
+
+    .program-block .item-content::before {
+        top: 3px;
+        left: 8px;
+        width: 17px;
+        height: 17px;
+    }
+
+    .program-block .item-content::after {
+        left: 19px;
+    }
+
+    .who-block .who-info li + li {
+        margin-top: 20px;
+    }
+
+    .payment-block .col:first-child {
+        padding-right: 20px;
+    }
+
+    .why-block .item {
+        margin-top: 40px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -258,6 +388,16 @@
 
     .user-information .user-information-list {
         column-count: 1;
+    }
+
+    .btn.btn-big {
+        font-size: 18px;
+        line-height: 40px;
+        height: 40px;
+    }
+
+    .btn.btn-big i {
+        margin-left: 5px;
     }
 }
 
@@ -307,6 +447,44 @@
         width: 100%;
         float: none;
         margin: 10px 0;
+    }
+
+    .result-block .item-content,
+    .program-block .item-content p,
+    .advanced-information-block .advanced-information-block-inner p,
+    .payment-block p,
+    .who-block .who-info li,
+    .why-block .item .item-text,
+    .who-block .block-description {
+        font-size: 15px;
+        line-height: 21px;
+    }
+
+    .program-block .item-number {
+        display: none;
+    }
+
+    .result-block .item-number {
+        width: 70px;
+        height: 70px;
+    }
+
+    .result-block .item-number span {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .result-block .result-block-inner::after {
+        left: 31px;
+    }
+
+    .result-block .item-content {
+        width: calc(100% - 70px);
+        padding-left: 20px;
+    }
+
+    .who-block .who-info li {
+        padding-right: 0;
     }
 }
 

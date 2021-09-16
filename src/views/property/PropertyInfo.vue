@@ -50,7 +50,10 @@ export default {
     },
     mounted() {
         this.currentId = this.$route.params.id || 0
-        this.$store.dispatch("infoProperty", this.currentId)
+        if (this.currentId === 0)
+            this.$router.push('/property')
+        else
+            this.$store.dispatch("infoProperty", this.currentId)
     },
     methods: {
         remove: function(id) {

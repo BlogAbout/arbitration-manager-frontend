@@ -65,6 +65,15 @@ const routes = [
         component: () => import('../views/profile/ProfileEdit.vue')
     },
     {
+        path: '/profile/documents/passport',
+        name: 'DocumentPassport',
+        meta: {
+            title: 'Заполнение информации о гражданине',
+            description: 'Заполнение информации о гражданине'
+        },
+        component: () => import('../views/profile/DocumentPassport.vue')
+    },
+    {
         path: '/bankruptcy-entities',
         name: 'BankruptcyEntities',
         meta: {
