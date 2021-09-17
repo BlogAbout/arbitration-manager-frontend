@@ -61,7 +61,7 @@
     .menu-panel .main-menu {
         display: none;
         position: absolute;
-        right: 0;
+        left: 0;
         top: 47px;
         background-color: #303440;
         z-index: 9;
@@ -248,12 +248,14 @@
 
     .footer .row {
         justify-content: center;
-        text-align: center;
+    }
+
+    .footer .social-links {
+        margin: 30px 0;
     }
 
     .footer .copyright {
         text-align: center;
-        margin-top: 30px;
     }
 
     .list-items {
@@ -386,7 +388,7 @@
         padding: 20px 0 0;
     }
 
-    .user-information .user-information-list {
+    .information-list {
         column-count: 1;
     }
 
@@ -496,7 +498,6 @@
     .top-panel .contacts,
     .menu-panel .main-menu {
         width: 100%;
-        text-align: center;
     }
 
     .city-list {

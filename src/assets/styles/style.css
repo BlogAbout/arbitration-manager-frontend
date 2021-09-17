@@ -444,16 +444,16 @@ p {
 }
 
 .menu-panel .mobile-toggle-button .email a {
-    margin-left: 10px;
+    margin-right: 10px;
     color: #fff;
 }
 
 .menu-panel .mobile-toggle-button .toggle-menu-link {
     flex-shrink: 0;
-    margin-left: auto;
+    margin-right: auto;
+    margin-left: 10px;
     color: #fff;
     font-size: 35px;
-    margin-right: 10px;
 }
 
 .menu-panel .main-menu {
@@ -539,15 +539,12 @@ p {
 }
 
 .social-links {
-    position: fixed;
-    left: 35px;
-    bottom: 35px;
-    width: 30px;
-    z-index: 5;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
 
 .social-links .social-icon {
-    margin-top: 5px;
+    margin-left: 5px;
 }
 
 .social-links a {
@@ -658,13 +655,9 @@ p {
     background-color: #fff;
 }
 
+.entity-block .text-container,
 .individual-block .text-container {
     padding: 40px 80px 40px 0;
-}
-
-.entity-block .text-container {
-    padding: 40px 0 40px 80px;
-    text-align: right;
 }
 
 .individual-block .background-block,
@@ -964,15 +957,20 @@ form .col.col-2 {
     border-top: 1px dotted #303440;
 }
 
-.user-information .user-information-list {
+.information-list {
     column-count: 2;
 }
 
-.user-information .param {
+.information-list.information-list-one {
+    column-count: 1;
+    margin-bottom: 20px;
+}
+
+.information-list .param {
     line-height: 40px;
 }
 
-.user-information .param .param-label {
+.information-list .param .param-label {
     font-size: 14px;
     font-style: italic;
     color: #8a8a8a;
@@ -983,7 +981,7 @@ form .col.col-2 {
     vertical-align: middle;
 }
 
-.user-information .param .param-value {
+.information-list .param .param-value {
     line-height: 22px;
     vertical-align: middle;
 }
@@ -1019,7 +1017,7 @@ h3 .link-small {
     border-top: 1px dashed #303440;
 }
 
-.question-item-answer {
+.text-wrap {
     white-space: pre-wrap;
 }
 

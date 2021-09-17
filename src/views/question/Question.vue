@@ -18,7 +18,7 @@
                             class="item"
                         >
                             <h3 v-if="isAuthenticated && authorities && authorities.indexOf('ROLE_ADMIN') !== -1">
-                                <span>{{ index + 1 }}. {{ item.question }}</span>
+                                <router-link :to="'/question/' + item.id + '-info'">{{ item.question }}</router-link>
                                 <router-link :to="'/question/' + item.id + '-edit'" class="link-small" title="Редактировать">
                                     <i class="far fa-edit"></i>
                                 </router-link>
@@ -26,8 +26,7 @@
                                     <i class="far fa-trash-alt"></i>
                                 </a>
                             </h3>
-                            <h3 v-else>{{ index + 1 }}. {{ item.question }}</h3>
-                            <div class="question-item-answer">{{ item.answer }}</div>
+                            <h3 v-else><router-link :to="'/question/' + item.id + '-info'">{{ item.question }}</router-link></h3>
                         </div>
                     </div>
                     <loader v-else-if="loading" />

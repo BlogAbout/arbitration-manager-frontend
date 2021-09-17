@@ -160,6 +160,16 @@ const routes = [
         component: () => import('../views/question/QuestionAdd.vue'),
     },
     {
+        path: '/question/:id-info',
+        name: 'QuestionInfo',
+        meta: {
+            title: 'Вопросы и ответы',
+            description: 'Вопросы и ответы на часто задаваемые вопросы о банкротстве юридических и физических лиц',
+            nonRequiresAuth: true
+        },
+        component: () => import('../views/question/QuestionInfo.vue')
+    },
+    {
         path: '/education',
         name: 'Education',
         meta: {

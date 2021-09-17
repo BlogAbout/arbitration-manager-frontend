@@ -44,12 +44,12 @@
                         </router-link>
                     </ul>
                     <div class="mobile-toggle-button">
-                        <div class="email">
-                            <a href="mailto:info@arbitration-manager.ru">info@arbitration-manager.ru</a>
-                        </div>
                         <a class="toggle-menu-link" href="#" @click.prevent="mobileMenuShow = !mobileMenuShow">
                             <i class="fas fa-bars"></i>
                         </a>
+                        <div class="email">
+                            <a href="mailto:info@arbitration-manager.ru">info@arbitration-manager.ru</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -91,20 +91,20 @@
                         </ul>
                     </div>
                     <div class="col col-3">
+                        <div class="social-links row">
+                            <div
+                                v-for="(item, index) in socialIcons"
+                                :key="'social-icon-' + index"
+                                class="social-icon"
+                            >
+                                <a :href="item.link" target="_blank"><i :class="item.icon"></i></a>
+                            </div>
+                        </div>
                         <div class="copyright">&copy; {{ new Date().getFullYear() }}. All rights reserved. Арбитражный управляющий.</div>
                     </div>
                 </div>
             </div>
         </footer>
-        <div class="social-links">
-            <div
-                v-for="(item, index) in socialIcons"
-                :key="'social-icon-' + index"
-                class="social-icon"
-            >
-                <a :href="item.link" target="_blank"><i :class="item.icon"></i></a>
-            </div>
-        </div>
         <div class="goto-up-block">
             <a href="#" @click.prevent="goToTop"><i class="fas fa-level-up-alt"></i></a>
         </div>
@@ -148,10 +148,8 @@ export default {
             {title: 'Контакты', url: '/contacts'}
         ],
         socialIcons: [
-            {icon: 'fab fa-vk', link: '#'},
-            {icon: 'fab fa-youtube', link: '#'},
             {icon: 'fab fa-twitter', link: '#'},
-            {icon: 'fab fa-instagram', link: '#'},
+            {icon: 'fab fa-instagram', link: 'https://instagram.com/arbitr.marchenko'},
             {icon: 'fab fa-facebook-f', link: '#'},
         ]
     }),
@@ -162,17 +160,6 @@ export default {
         goToTop() {
             window.scrollTo(0, 0);
         }
-    },
-    mounted() {
-        this.$store.dispatch('checkPing')
-        this.intervalTimer = setInterval(() => {
-            this.$store.dispatch('checkPing')
-        }, 900000)
-
-        this.$once('hook:beforeDestroy', function() {
-            if (this.intervalTimer)
-                clearInterval(this.intervalTimer)
-        })
     }
 }
 </script>

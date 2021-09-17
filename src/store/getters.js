@@ -10,9 +10,6 @@ const getters = {
     },
     isAuthenticated() {
         return localStorage.getItem('AuthState') === 'true'
-    },
-    getPing(state) {
-        return state.ping
     }
 };
 

@@ -8,9 +8,6 @@ const mutations = {
     setAuth(state, auth) {
         localStorage.setItem('AuthState', auth)
         state.authenticated = auth
-    },
-    setPing(state, date) {
-        state.ping = date
     }
 };
 

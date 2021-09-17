@@ -11,7 +11,7 @@
                                 <i class="far fa-edit"></i>
                             </router-link>
                         </h3>
-                        <div class="user-information-list">
+                        <div class="information-list">
                             <div class="param">
                                 <span class="param-label">Тип:</span>
                                 <span v-if="!userInfo.entity" class="param-value">Физическое лицо</span>
@@ -66,7 +66,7 @@
                                 <i class="fas fa-download"></i>
                             </router-link>
                         </h3>
-                        <div class="user-information-list">
+                        <div class="information-list">
                             <div class="param">
                                 <span class="param-label">Информация о гражданине:</span>
                                 <span class="param-value">

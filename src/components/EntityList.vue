@@ -3,15 +3,15 @@
         <div class="wrap">
             <div class="row row-stretch">
                 <div class="col col-2">
-                    <div class="background-block">
-                        <div class="background-block-inner"><strong>Евгения Марченко</strong><br />Арбитражный управляющий</div>
-                    </div>
-                </div>
-                <div class="col col-2">
                     <div class="text-container">
                         <h2>Банкротство юридических лиц</h2>
                         <p>Длительная процедура. Ее необходимо грамотно организовать, чтобы удовлетворить претензии кредиторов и сохранить по максимуму имущество, насколько это возможно. Управляющий организовывает весь процесс и отвечает за организацию в рамках закона.</p>
                         <p><router-link to="/bankruptcy-entities">Подробнее</router-link></p>
+                    </div>
+                </div>
+                <div class="col col-2">
+                    <div class="background-block">
+                        <div class="background-block-inner"><strong>Евгения Марченко</strong><br />Арбитражный управляющий</div>
                     </div>
                 </div>
             </div>

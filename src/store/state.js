@@ -1,8 +1,7 @@
 const state = {
     error: null,
     loading: false,
-    authenticated: localStorage.getItem('AuthState') === 'true',
-    ping: null
+    authenticated: localStorage.getItem('AuthState') === 'true'
 };
 
 export default state;
