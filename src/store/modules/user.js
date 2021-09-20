@@ -33,13 +33,14 @@ export default {
         },
         addDocumentPassport({ commit }, formData) {
             return new Promise((resolve, reject) => {
+                const partsBirth = formData.birthDate.split('.')
                 const data = {
                     userId: 0,
                     lastName: formData.lastName,
                     firstName: formData.firstName,
                     middleName: formData.middleName,
                     prevFio: formData.prevFio,
-                    birthDate: formData.birthDate,
+                    birthDate: partsBirth[2] + '-' + partsBirth[1] + '-' + partsBirth[0],
                     birthPlace: formData.birthPlace,
                     snils: formData.snils,
                     inn: formData.inn,

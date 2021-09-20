@@ -5,7 +5,7 @@
                 <div class="content-block-inner">
                     <h1>Информация о гражданине</h1>
                     <form name="form-passport" action="" method="post" @submit.prevent="submitHandler">
-                        <h3>Личные данные</h3>
+                        <h3 class="mt-50">Личные данные</h3>
                         <div class="row row-wrap row-space">
                             <div class="col col-2">
                                 <div class="field">
@@ -75,8 +75,9 @@
                                         type="text"
                                         name="birthDate"
                                         class="validate"
-                                        placeholder="Дата рождения (обязательно)"
+                                        placeholder="дд.мм.гггг (обязательно)"
                                         v-model.trim="birthDate"
+                                        v-date
                                         :class="{invalid: ($v.birthDate.$dirty && !$v.birthDate.required)}"
                                     />
                                     <span
@@ -126,15 +127,16 @@
                                     <label for="inn">ИНН</label>
                                     <input
                                         id="inn"
-                                        type="text"
+                                        type="number"
                                         name="inn"
+                                        step="1"
                                         placeholder="ИНН (при наличии)"
                                         v-model.trim="inn"
                                     />
                                 </div>
                             </div>
                         </div>
-                        <h3>Документ, удостоверяющий личность</h3>
+                        <h3 class="mt-50">Документ, удостоверяющий личность</h3>
                         <div class="row row-wrap row-space">
                             <div class="col col-2">
                                 <div class="field">
@@ -173,7 +175,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h3>
+                        <h3 class="mt-50">
                             Адрес регистрации по месту жительства в Российской Федерации
                             <span class="tooltip-help">?<span class="tooltip-help-text">При отсутствии регистрации по месту жительства в пределах Российской Федерации указать наименование субъекта Российской Федерации по месту пребывания без указания конкретного адреса</span></span>
                         </h3>
@@ -289,7 +291,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="id" id="userId" v-model="id" />
+                        <input type="hidden" name="id" id="id" v-model="id" />
                     </form>
                     <div v-if="message" class="errors">{{ message }}</div>
                 </div>
@@ -318,28 +320,30 @@ export default {
     },
     mounted() {
         this.currentLogin = this.$store.getters.getUsername
-        /*this.$store.dispatch("infoDocumentPassport", this.currentLogin)
+        this.$store.dispatch("infoDocumentPassport", this.currentLogin)
             .then((response) => {
-                this.id = response.data.id
-                this.lastName = response.data.lastName
-                this.firstName = response.data.firstName
-                this.middleName = response.data.middleName
-                this.prevFio = response.data.prevFio
-                this.birthDate = response.data.birthDate
-                this.birthPlace = response.data.birthPlace
-                this.snils = response.data.snils
-                this.inn = response.data.inn
-                this.documentType = response.data.documentType
-                this.documentSeries = response.data.documentSeries
-                this.subject = response.data.subject
-                this.area = response.data.area
-                this.city = response.data.city
-                this.locality = response.data.locality
-                this.street = response.data.street
-                this.house = response.data.house
-                this.hull = response.data.hull
-                this.apartment = response.data.apartment
-            })*/
+                if (response.status === 200) {
+                    this.id = response.data.id || ''
+                    this.lastName = response.data.lastName || ''
+                    this.firstName = response.data.firstName || ''
+                    this.middleName = response.data.middleName || ''
+                    this.prevFio = response.data.prevFio || ''
+                    this.birthDate = response.data.birthDate ? this.$options.filters.dateFormat(response.data.birthDate, 'short') : ''
+                    this.birthPlace = response.data.birthPlace || ''
+                    this.snils = response.data.snils || ''
+                    this.inn = response.data.inn || ''
+                    this.documentType = response.data.documentType || ''
+                    this.documentSeries = response.data.documentSeries || ''
+                    this.subject = response.data.subject || ''
+                    this.area = response.data.area || ''
+                    this.city = response.data.city || ''
+                    this.locality = response.data.locality || ''
+                    this.street = response.data.street || ''
+                    this.house = response.data.house || ''
+                    this.hull = response.data.hull || ''
+                    this.apartment = response.data.apartment || ''
+                }
+            })
     },
     data: () => ({
         id: 0,
@@ -422,7 +426,17 @@ export default {
                 apartment: this.apartment
             }
 
-            console.log(formData)
+            await this.$store.dispatch('addDocumentPassport', formData)
+                .then((response) => {
+                    if (response.status === 202)
+                        this.message = response.data
+
+                    if (response.status === 200)
+                        this.$router.push('/profile')
+                })
+                .catch((error) => {
+                    this.message = error.message
+                })
         }
     }
 }

@@ -39,8 +39,8 @@
                 </div>
             </div>
         </section>
-        <individual-list />
         <diplomas-list />
+        <individual-list />
         <entity-list />
         <feedback />
     </main>

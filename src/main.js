@@ -6,7 +6,8 @@ import store from './store'
 import AXIOS from './http-common'
 import VueEasyLightbox from 'vue-easy-lightbox'
 
-import costFormatFilter from "@/utils/filters/cost.format.filter"
+import costFormatFilter from '@/utils/filters/cost.format.filter'
+import dateFormatFilter from '@/utils/filters/date.format.filter'
 
 import './assets/styles/style.css'
 import './assets/styles/mobile.css'
@@ -18,6 +19,7 @@ Vue.use(Vuelidate)
 Vue.use(VueEasyLightbox)
 
 Vue.filter('costFormat', costFormatFilter)
+Vue.filter('dateFormat', dateFormatFilter)
 
 Vue.directive('phone', {
     bind(el) {
@@ -36,11 +38,25 @@ Vue.directive('phone', {
     },
 })
 
+Vue.directive('date', {
+    bind(el) {
+        el.oninput = function(e) {
+            if (!e.isTrusted)
+                return
+
+            const x = this.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,2})(\d{0,4})/)
+            this.value = !x[2] ? x[1] : x[1] + '.' + (!x[3] ? x[2] : x[2] + '.' + x[3])
+            el.dispatchEvent(new Event('input'))
+        }
+    }
+})
+
 new Vue({
     router,
     store,
     render: h => h(App),
     data: {
-        phone: ''
+        phone: '',
+        date: ''
     },
 }).$mount('#app')

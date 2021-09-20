@@ -70,28 +70,36 @@
                             <div class="param">
                                 <span class="param-label">Информация о гражданине:</span>
                                 <span class="param-value">
-                                    <router-link to="/profile/documents/passport">Заполнить</router-link>
+                                    <router-link
+                                        to="/profile/documents/passport"
+                                        v-html="documentPassport ? 'Изменить' : 'Заполнить'"
+                                    />
                                 </span>
                             </div>
                             <div class="param">
                                 <span class="param-label">ИНН:</span>
-                                <span class="param-value"><router-link to="/profile/documents">Заполнить</router-link></span>
+                                <span class="param-value">Заполнить</span>
                             </div>
                             <div class="param">
                                 <span class="param-label">Реквизиты:</span>
-                                <span class="param-value"><router-link to="/profile/documents">Заполнить</router-link></span>
+                                <span class="param-value">Заполнить</span>
                             </div>
                             <div class="param">
                                 <span class="param-label">Опись имущества:</span>
-                                <span class="param-value"><router-link to="/profile/documents">Заполнить</router-link></span>
+                                <span class="param-value">
+                                    <router-link
+                                        to="/profile/documents/property"
+                                        v-html="documentProperty ? 'Изменить' : 'Заполнить'"
+                                    />
+                                </span>
                             </div>
                             <div class="param">
                                 <span class="param-label">Список кредиторов и должников:</span>
-                                <span class="param-value"><router-link to="/profile/documents">Заполнить</router-link></span>
+                                <span class="param-value">Заполнить</span>
                             </div>
                             <div class="param">
                                 <span class="param-label">Другое:</span>
-                                <span class="param-value"><router-link to="/profile/documents">Заполнить</router-link></span>
+                                <span class="param-value">Заполнить</span>
                             </div>
                         </div>
                     </div>
@@ -102,7 +110,7 @@
                                 <i class="far fa-eye"></i>
                             </router-link>
                         </h3>
-                        <div class="user-information-inner">
+                        <div class="information-list information-list-one">
                             <div class="param">
                                 <span class="param-label">Статус:</span>
                                 <span class="param-value">проверка документов</span>
@@ -114,6 +122,33 @@
                             <div class="param">
                                 <span class="param-label">Комментарий:</span>
                                 <span class="param-value">Произведите загрузку всех документов в разделе "Документы".</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="userInfo" class="user-information">
+                        <h3>
+                            <span>Услуги</span>
+                        </h3>
+                        <div class="information-list">
+                            <div class="param">
+                                <span class="param-label">Помощь в сборе документов:</span>
+                                <span class="param-cost">50 000 руб.</span>
+                                <span class="param-value"><a href="#" class="btn">Заказать</a></span>
+                            </div>
+                            <div class="param">
+                                <span class="param-label">Подача документов в инстанции:</span>
+                                <span class="param-cost">100 000 руб.</span>
+                                <span class="param-value"><a href="#" class="btn">Заказать</a></span>
+                            </div>
+                            <div class="param">
+                                <span class="param-label">Помощь в продаже имущества:</span>
+                                <span class="param-cost">150 000 руб.</span>
+                                <span class="param-value"><a href="#" class="btn">Заказать</a></span>
+                            </div>
+                            <div class="param">
+                                <span class="param-label">Полная процедура банкротства:</span>
+                                <span class="param-cost">250 000 руб.</span>
+                                <span class="param-value"><a href="#" class="btn">Заказать</a></span>
                             </div>
                         </div>
                     </div>
@@ -140,11 +175,18 @@ export default {
         })
     },
     data: () => ({
-        currentLogin: ''
+        currentLogin: '',
+        documentPassport: false,
+        documentProperty: false
     }),
     mounted() {
         this.currentLogin = this.$store.getters.getUsername
         this.$store.dispatch("userInfo", this.currentLogin)
+        this.$store.dispatch("infoDocumentPassport", this.currentLogin)
+            .then((response) => {
+                if (response.status === 200)
+                    this.documentPassport = true
+            })
     },
 }
 </script>
