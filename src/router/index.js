@@ -106,8 +106,8 @@ const routes = [
         path: '/property',
         name: 'Property',
         meta: {
-            title: 'Имущество',
-            description: 'Распродаваемое имущество физических и юридических лиц в процессе банкротства',
+            title: 'Имущество с торгов',
+            description: 'Распродаваемое имущество с торгов физических и юридических лиц в процессе банкротства',
             nonRequiresAuth: true
         },
         component: () => import('../views/property/Property.vue')
@@ -116,8 +116,8 @@ const routes = [
         path: '/property/add',
         name: 'PropertyAdd',
         meta: {
-            title: 'Новое имущество',
-            description: 'Новое имущество'
+            title: 'Новое имущество с торгов',
+            description: 'Новое имущество с торгов'
         },
         component: () => import('../views/property/PropertyAdd.vue'),
     },
@@ -125,8 +125,8 @@ const routes = [
         path: '/property/:id-edit',
         name: 'PropertyEdit',
         meta: {
-            title: 'Редактировать имущество',
-            description: 'Редактировать имущество'
+            title: 'Редактировать имущество с торгов',
+            description: 'Редактировать имущество с торгов'
         },
         component: () => import('../views/property/PropertyAdd.vue'),
     },
@@ -134,8 +134,8 @@ const routes = [
         path: '/property/:id-info',
         name: 'PropertyInfo',
         meta: {
-            title: 'Имущество',
-            description: 'Распродаваемое имущество физических и юридических лиц в процессе банкротства',
+            title: 'Имущество с торгов',
+            description: 'Распродаваемое имущество с торгов физических и юридических лиц в процессе банкротства',
             nonRequiresAuth: true
         },
         component: () => import('../views/property/PropertyInfo.vue')

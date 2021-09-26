@@ -313,7 +313,7 @@
                             </div>
                             <div class="col col-5">
                                 <div class="field">
-                                    <label :for="'type-securities-address-' + index">Местонахож-дение организации (адрес)</label>
+                                    <label :for="'type-securities-address-' + index">Местонахождение организации (адрес)</label>
                                     <input
                                         :id="'type-securities-address-' + index"
                                         type="text"
@@ -371,9 +371,81 @@
                         </div>
                         <p><a href="#" @click.prevent="addSecurities">Добавить</a></p>
                         <h3 class="mt-50">Иные ценные бумаги</h3>
-                        <div class="row row-wrap row-space">
-
+                        <div
+                            v-for="(item, index) in documentProperty.otherSecuritiesList"
+                            :key="'other-securities-' + index"
+                            class="row row-wrap row-space row-bottom row-dynamic-generation"
+                        >
+                            <div class="col col-5">
+                                <div class="field">
+                                    <label :for="'type-other-securities-title-' + index">
+                                        Вид ценной бумаги
+                                        <span class="tooltip-help">?<span class="tooltip-help-text">Указываются все ценные бумаги по видам (например, облигации, векселя), за исключением акций, указанных в разделе IV "Акции и иное участие в коммерческих организациях".</span></span>
+                                    </label>
+                                    <input
+                                        :id="'type-other-securities-title-' + index"
+                                        type="text"
+                                        name="documentProperty[otherSecuritiesList][title]"
+                                        placeholder="Вид ценной бумаги "
+                                        v-model.trim="item.title"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col col-5">
+                                <div class="field">
+                                    <label :for="'type-other-securities-person-' + index">Лицо, выпустившее ценную бумагу</label>
+                                    <input
+                                        :id="'type-other-securities-person-' + index"
+                                        type="text"
+                                        name="documentProperty[otherSecuritiesList][person]"
+                                        placeholder="Лицо, выпустившее ценную бумагу"
+                                        v-model.trim="item.person"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col col-5">
+                                <div class="field">
+                                    <label :for="'type-other-securities-volume-' + index">Номинальная величина обязательства (руб.)</label>
+                                    <input
+                                        :id="'type-other-securities-volume-' + index"
+                                        type="text"
+                                        name="documentProperty[otherSecuritiesList][volume]"
+                                        placeholder="Номинальная величина обязательства (руб.)"
+                                        v-model.trim="item.volume"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col col-5">
+                                <div class="field">
+                                    <label :for="'type-other-securities-count-' + index">Общее количество</label>
+                                    <input
+                                        :id="'type-other-securities-count-' + index"
+                                        type="number"
+                                        min="0"
+                                        step="1"
+                                        name="documentProperty[otherSecuritiesList][count]"
+                                        placeholder="Общее количество"
+                                        v-model.trim="item.proportion"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col col-5">
+                                <div class="field">
+                                    <label :for="'type-other-securities-cost-' + index">
+                                        Общая стоимость (руб.)
+                                        <span class="tooltip-help">?<span class="tooltip-help-text">Указывается общая стоимость ценных бумаг данного вида исходя из стоимости их приобретения (если ее нельзя определить – исходя из рыночной стоимости или номинальной стоимости). Для обязательств, выраженных в иностранной валюте, стоимость указывается в рублях по курсу Банка России на дату составления описи имущества гражданина.</span></span>
+                                    </label>
+                                    <input
+                                        :id="'type-other-securities-cost-' + index"
+                                        type="text"
+                                        name="documentProperty[otherSecuritiesList][cost]"
+                                        placeholder="Общая стоимость (руб.)"
+                                        v-model.trim="item.base"
+                                    />
+                                </div>
+                            </div>
                         </div>
+                        <p><a href="#" @click.prevent="addOtherSecuritiesList">Добавить</a></p>
                         <h3 class="mt-50">Сведения о наличных денежных средствах и ином ценном имуществе</h3>
                         <div class="row row-wrap row-space">
 
@@ -427,7 +499,9 @@ export default {
             notMovableList: [],
             movableList: [],
             billList: [],
-            securitiesList: []
+            securitiesList: [],
+            otherSecuritiesList: [],
+            moneyList: []
         },
         message: ''
     }),
@@ -478,6 +552,24 @@ export default {
                 capital: '',
                 proportion: '',
                 base: ''
+            })
+        },
+        addOtherSecuritiesList: function() {
+            this.documentProperty.otherSecuritiesList.push({
+                title: '',
+                person: '',
+                volume: '',
+                count: '',
+                cost: ''
+            })
+        },
+        addMoneyList: function() {
+            this.documentProperty.moneyList.push({
+                type: '',
+                title: '',
+                cost: '',
+                address: '',
+                info: ''
             })
         }
     }
