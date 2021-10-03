@@ -1,15 +1,22 @@
 export default {
     state: {
-        documentPassport: null
+        documentPassport: null,
+        documentInfo: null
     },
     getters: {
         getDocumentPassport(state) {
             return state.documentPassport
+        },
+        getDocumentInfo(state) {
+            return state.documentInfo
         }
     },
     mutations: {
         setDocumentPassport(state, document) {
             state.documentPassport = document
+        },
+        setDocumentInfo(state, document) {
+            state.documentInfo = document
         }
     },
     actions: {
@@ -25,6 +32,24 @@ export default {
                     })
                     .catch((error) => {
                         commit('setDocumentPassport', null)
+                        commit('setError', error.message)
+                        commit('setLoading', false)
+                        reject()
+                    })
+            })
+        },
+        infoDocumentInfo({ commit }, data) {
+            return new Promise((resolve, reject) => {
+                commit('setLoading', true)
+                this._vm.$axios.get(`/documents/info/${data.login}/${data.type}`)
+                    .then((response) => {
+                        commit('setDocumentInfo', response.data)
+                        commit('setError', null)
+                        commit('setLoading', false)
+                        resolve(response)
+                    })
+                    .catch((error) => {
+                        commit('setDocumentInfo', null)
                         commit('setError', error.message)
                         commit('setLoading', false)
                         reject()
@@ -73,6 +98,44 @@ export default {
                 } else {
                     this._vm.$axios
                         .put('/documents/passport/' + formData.id, data)
+                        .then(response => {
+                            commit('setError', null)
+                            commit('setLoading', false)
+                            resolve(response)
+                        })
+                        .catch(error => {
+                            commit('setError', error.message)
+                            commit('setLoading', false)
+                            reject(error)
+                        })
+                }
+            })
+        },
+        addDocumentInfo({ commit }, formData) {
+            return new Promise((resolve, reject) => {
+                const data = {
+                    userId: 0,
+                    type: formData.type,
+                    documentInfo: JSON.stringify(formData.documentInfo),
+                }
+
+                commit('setLoading', true)
+                if (formData.id === 0) {
+                    this._vm.$axios
+                        .post('/documents/info/', data)
+                        .then(response => {
+                            commit('setError', null)
+                            commit('setLoading', false)
+                            resolve(response)
+                        })
+                        .catch(error => {
+                            commit('setError', error.message)
+                            commit('setLoading', false)
+                            reject(error)
+                        })
+                } else {
+                    this._vm.$axios
+                        .put('/documents/info/' + formData.id, data)
                         .then(response => {
                             commit('setError', null)
                             commit('setLoading', false)

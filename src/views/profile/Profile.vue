@@ -187,6 +187,11 @@ export default {
                 if (response.status === 200)
                     this.documentPassport = true
             })
+        this.$store.dispatch("infoDocumentInfo", { login: this.currentLogin, type: 'property' })
+            .then((response) => {
+                if (response.status === 200)
+                    this.documentProperty = true
+            })
     },
 }
 </script>

@@ -7,7 +7,7 @@
                     <form name="form-passport" action="" method="post" @submit.prevent="submitHandler">
                         <h3 class="mt-50">Недвижимое имущество</h3>
                         <div
-                            v-for="(item, index) in documentProperty.notMovableList"
+                            v-for="(item, index) in documentInfo.notMovableList"
                             :key="'not-movable-' + index"
                             class="row row-wrap row-space row-bottom row-dynamic-generation"
                         >
@@ -15,7 +15,7 @@
                                 <div class="field">
                                     <label :for="'type-not-movable-type-' + index">Вид имущества</label>
                                     <select
-                                        name="documentProperty[notMovableList][type]"
+                                        name="documentInfo[notMovableList][type]"
                                         :id="'type-not-movable-type-' + index"
                                         v-model="item.type"
                                     >
@@ -33,7 +33,7 @@
                                     <input
                                         :id="'type-not-movable-title-' + index"
                                         type="text"
-                                        name="documentProperty[notMovableList][title]"
+                                        name="documentInfo[notMovableList][title]"
                                         placeholder="Наименование имущества"
                                         v-model.trim="item.title"
                                     />
@@ -48,7 +48,7 @@
                                     <input
                                         :id="'type-not-movable-category-' + index"
                                         type="text"
-                                        name="documentProperty[notMovableList][category]"
+                                        name="documentInfo[notMovableList][category]"
                                         placeholder="Вид собственности"
                                         v-model.trim="item.category"
                                     />
@@ -60,7 +60,7 @@
                                     <input
                                         :id="'type-not-movable-address-' + index"
                                         type="text"
-                                        name="documentProperty[notMovableList][address]"
+                                        name="documentInfo[notMovableList][address]"
                                         placeholder="Местонахождение (адрес)"
                                         v-model.trim="item.address"
                                     />
@@ -72,7 +72,7 @@
                                     <input
                                         :id="'type-not-movable-area-' + index"
                                         type="number"
-                                        name="documentProperty[notMovableList][area]"
+                                        name="documentInfo[notMovableList][area]"
                                         placeholder="Площадь (кв.м)"
                                         min="0"
                                         step="0.01"
@@ -91,7 +91,7 @@
                                     <input
                                         :id="'type-not-movable-base-' + index"
                                         type="text"
-                                        name="documentProperty[notMovableList][base]"
+                                        name="documentInfo[notMovableList][base]"
                                         placeholder="Основания приобретения и стоимость"
                                         v-model.trim="item.base"
                                     />
@@ -106,7 +106,7 @@
                                     <input
                                         :id="'type-not-movable-info-' + index"
                                         type="text"
-                                        name="documentProperty[notMovableList][info]"
+                                        name="documentInfo[notMovableList][info]"
                                         placeholder="Сведения о залоге и залогодержателе"
                                         v-model.trim="item.info"
                                     />
@@ -116,7 +116,7 @@
                         <p><a href="#" @click.prevent="addNotMovable">Добавить</a></p>
                         <h3 class="mt-50">Движимое имущество</h3>
                         <div
-                            v-for="(item, index) in documentProperty.movableList"
+                            v-for="(item, index) in documentInfo.movableList"
                             :key="'movable-' + index"
                             class="row row-wrap row-space row-bottom row-dynamic-generation"
                         >
@@ -124,7 +124,7 @@
                                 <div class="field">
                                     <label :for="'type-movable-type-' + index">Вид имущества</label>
                                     <select
-                                        name="documentProperty[movableList][type]"
+                                        name="documentInfo[movableList][type]"
                                         :id="'type-movable-type-' + index"
                                         v-model="item.type"
                                     >
@@ -144,8 +144,8 @@
                                     <input
                                         :id="'type-movable-title-' + index"
                                         type="text"
-                                        name="documentProperty[movableList][title]"
-                                        placeholder="Вид, марка, модель транспорт¬ного средства, год изготовления"
+                                        name="documentInfo[movableList][title]"
+                                        placeholder="Вид, марка, модель транспортного средства, год изготовления"
                                         v-model.trim="item.title"
                                     />
                                 </div>
@@ -159,7 +159,7 @@
                                     <input
                                         :id="'type-movable-number-' + index"
                                         type="text"
-                                        name="documentProperty[movableList][number]"
+                                        name="documentInfo[movableList][number]"
                                         placeholder="Идентификационный номер"
                                         v-model.trim="item.number"
                                     />
@@ -174,7 +174,7 @@
                                     <input
                                         :id="'type-movable-category-' + index"
                                         type="text"
-                                        name="documentProperty[movableList][category]"
+                                        name="documentInfo[movableList][category]"
                                         placeholder="Основания приобретения и стоимость"
                                         v-model.trim="item.category"
                                     />
@@ -186,7 +186,7 @@
                                     <input
                                         :id="'type-movable-address-' + index"
                                         type="text"
-                                        name="documentProperty[movableList][address]"
+                                        name="documentInfo[movableList][address]"
                                         placeholder="Место нахождения/место хранения (адрес)"
                                         v-model.trim="item.address"
                                     />
@@ -194,14 +194,14 @@
                             </div>
                             <div class="col col-3">
                                 <div class="field">
-                                    <label :for="'type-not-movable-cost-' + index">
+                                    <label :for="'type-movable-cost-' + index">
                                         Стоимость
                                         <span class="tooltip-help">?<span class="tooltip-help-text">Указывается при наличии документов, содержащих сведения о стоимости имущества (например, отчет о стоимости имущества, подготовленный оценщиком, договор купли-продажи, кассовый чек, товарный чек, иной документ об оплате (приобретении) имущества).</span></span>
                                     </label>
                                     <input
-                                        :id="'type-not-movable-cost-' + index"
+                                        :id="'type-movable-cost-' + index"
                                         type="text"
-                                        name="documentProperty[movableList][cost]"
+                                        name="documentInfo[movableList][cost]"
                                         placeholder="Стоимость"
                                         min="0"
                                         step="0.01"
@@ -218,7 +218,7 @@
                                     <input
                                         :id="'type-movable-info-' + index"
                                         type="text"
-                                        name="documentProperty[movableList][info]"
+                                        name="documentInfo[movableList][info]"
                                         placeholder="Сведения о залоге и залогодержателе"
                                         v-model.trim="item.info"
                                     />
@@ -228,7 +228,7 @@
                         <p><a href="#" @click.prevent="addMovable">Добавить</a></p>
                         <h3 class="mt-50">Сведения о счетах в банках и иных кредитных организациях</h3>
                         <div
-                            v-for="(item, index) in documentProperty.billList"
+                            v-for="(item, index) in documentInfo.billList"
                             :key="'bill-' + index"
                             class="row row-wrap row-space row-bottom row-dynamic-generation"
                         >
@@ -238,7 +238,7 @@
                                     <input
                                         :id="'type-bill-title-' + index"
                                         type="text"
-                                        name="documentProperty[billList][title]"
+                                        name="documentInfo[billList][title]"
                                         placeholder="Наименование и адрес банка или иной кредитной организации"
                                         v-model.trim="item.title"
                                     />
@@ -253,7 +253,7 @@
                                     <input
                                         :id="'type-bill-currency-' + index"
                                         type="text"
-                                        name="documentProperty[billList][currency]"
+                                        name="documentInfo[billList][currency]"
                                         placeholder="Вид и валюта счета"
                                         v-model.trim="item.currency"
                                     />
@@ -265,7 +265,7 @@
                                     <input
                                         :id="'type-bill-dateStart-' + index"
                                         type="text"
-                                        name="documentProperty[billList][dateStart]"
+                                        name="documentInfo[billList][dateStart]"
                                         placeholder="Дата открытия счета"
                                         v-model.trim="item.dateStart"
                                     />
@@ -280,7 +280,7 @@
                                     <input
                                         :id="'type-bill-total-' + index"
                                         type="text"
-                                        name="documentProperty[billList][total]"
+                                        name="documentInfo[billList][total]"
                                         placeholder="Остаток на счете "
                                         min="0"
                                         step="0.01"
@@ -292,7 +292,7 @@
                         <p><a href="#" @click.prevent="addBill">Добавить</a></p>
                         <h3 class="mt-50">Акции и иное участие в коммерческих организациях</h3>
                         <div
-                            v-for="(item, index) in documentProperty.securitiesList"
+                            v-for="(item, index) in documentInfo.securitiesList"
                             :key="'securities-' + index"
                             class="row row-wrap row-space row-bottom row-dynamic-generation"
                         >
@@ -305,7 +305,7 @@
                                     <input
                                         :id="'type-securities-title-' + index"
                                         type="text"
-                                        name="documentProperty[securitiesList][title]"
+                                        name="documentInfo[securitiesList][title]"
                                         placeholder="Наименование и организационноправовая форма организации"
                                         v-model.trim="item.title"
                                     />
@@ -317,7 +317,7 @@
                                     <input
                                         :id="'type-securities-address-' + index"
                                         type="text"
-                                        name="documentProperty[securitiesList][address]"
+                                        name="documentInfo[securitiesList][address]"
                                         placeholder="Местонахождение организации (адрес)"
                                         v-model.trim="item.address"
                                     />
@@ -332,7 +332,7 @@
                                     <input
                                         :id="'type-securities-capital-' + index"
                                         type="text"
-                                        name="documentProperty[securitiesList][capital]"
+                                        name="documentInfo[securitiesList][capital]"
                                         placeholder="Уставный, складочный капитал, паевый фонд (руб.)"
                                         v-model.trim="item.capital"
                                     />
@@ -347,7 +347,7 @@
                                     <input
                                         :id="'type-securities-proportion-' + index"
                                         type="text"
-                                        name="documentProperty[securitiesList][proportion]"
+                                        name="documentInfo[securitiesList][proportion]"
                                         placeholder="Доля участия"
                                         v-model.trim="item.proportion"
                                     />
@@ -362,7 +362,7 @@
                                     <input
                                         :id="'type-securities-base-' + index"
                                         type="text"
-                                        name="documentProperty[securitiesList][base]"
+                                        name="documentInfo[securitiesList][base]"
                                         placeholder="Основание участия"
                                         v-model.trim="item.base"
                                     />
@@ -372,7 +372,7 @@
                         <p><a href="#" @click.prevent="addSecurities">Добавить</a></p>
                         <h3 class="mt-50">Иные ценные бумаги</h3>
                         <div
-                            v-for="(item, index) in documentProperty.otherSecuritiesList"
+                            v-for="(item, index) in documentInfo.otherSecuritiesList"
                             :key="'other-securities-' + index"
                             class="row row-wrap row-space row-bottom row-dynamic-generation"
                         >
@@ -385,7 +385,7 @@
                                     <input
                                         :id="'type-other-securities-title-' + index"
                                         type="text"
-                                        name="documentProperty[otherSecuritiesList][title]"
+                                        name="documentInfo[otherSecuritiesList][title]"
                                         placeholder="Вид ценной бумаги "
                                         v-model.trim="item.title"
                                     />
@@ -397,7 +397,7 @@
                                     <input
                                         :id="'type-other-securities-person-' + index"
                                         type="text"
-                                        name="documentProperty[otherSecuritiesList][person]"
+                                        name="documentInfo[otherSecuritiesList][person]"
                                         placeholder="Лицо, выпустившее ценную бумагу"
                                         v-model.trim="item.person"
                                     />
@@ -409,7 +409,7 @@
                                     <input
                                         :id="'type-other-securities-volume-' + index"
                                         type="text"
-                                        name="documentProperty[otherSecuritiesList][volume]"
+                                        name="documentInfo[otherSecuritiesList][volume]"
                                         placeholder="Номинальная величина обязательства (руб.)"
                                         v-model.trim="item.volume"
                                     />
@@ -423,7 +423,7 @@
                                         type="number"
                                         min="0"
                                         step="1"
-                                        name="documentProperty[otherSecuritiesList][count]"
+                                        name="documentInfo[otherSecuritiesList][count]"
                                         placeholder="Общее количество"
                                         v-model.trim="item.proportion"
                                     />
@@ -438,7 +438,7 @@
                                     <input
                                         :id="'type-other-securities-cost-' + index"
                                         type="text"
-                                        name="documentProperty[otherSecuritiesList][cost]"
+                                        name="documentInfo[otherSecuritiesList][cost]"
                                         placeholder="Общая стоимость (руб.)"
                                         v-model.trim="item.base"
                                     />
@@ -447,9 +447,88 @@
                         </div>
                         <p><a href="#" @click.prevent="addOtherSecuritiesList">Добавить</a></p>
                         <h3 class="mt-50">Сведения о наличных денежных средствах и ином ценном имуществе</h3>
-                        <div class="row row-wrap row-space">
-
+                        <div
+                            v-for="(item, index) in documentInfo.moneyList"
+                            :key="'money-' + index"
+                            class="row row-wrap row-space row-bottom row-dynamic-generation"
+                        >
+                            <div class="col col-3">
+                                <div class="field">
+                                    <label :for="'type-money-type-' + index">Вид имущества</label>
+                                    <select
+                                        name="documentInfo[moneyList][type]"
+                                        :id="'type-money-type-' + index"
+                                        v-model="item.type"
+                                    >
+                                        <option value="1">Наличные денежные средства</option>
+                                        <option value="2">Драгоценности, ювелирные украшения, предметы роскоши</option>
+                                        <option value="3">Предметы искусства</option>
+                                        <option value="4">Имущество, необходимое для профессиональных занятий</option>
+                                        <option value="5">Иное ценное имущество</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col col-3">
+                                <div class="field">
+                                    <label :for="'type-money-title-' + index">Наименование имущества</label>
+                                    <input
+                                        :id="'type-money-title-' + index"
+                                        type="text"
+                                        name="documentInfo[moneyList][title]"
+                                        placeholder="Наименование имущества"
+                                        v-model.trim="item.title"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col col-3">
+                                <div class="field">
+                                    <label :for="'type-money-cost-' + index">
+                                        Стоимость
+                                        <span class="tooltip-help">?<span class="tooltip-help-text">В отношении наличных денежных средств в валюте указывается сумма по курсу Банка России на дату подачи заявления о признании должника банкротом, в отношении иного указывается при наличии документов, содержащих сведения о стоимости имущества (например, отчет о стоимости имущества, подготовленный оценщиком, договор купли-продажи, кассовый чек, товарный чек, иной документ об оплате (приобретении) имущества).</span></span>
+                                    </label>
+                                    <input
+                                        :id="'type-money-cost-' + index"
+                                        type="text"
+                                        name="documentInfo[moneyList][cost]"
+                                        placeholder="Стоимость"
+                                        min="0"
+                                        step="0.01"
+                                        v-model.trim="item.cost"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col col-2">
+                                <div class="field">
+                                    <label :for="'type-money-address-' + index">
+                                        Место нахождения/место хранения (адрес)
+                                        <span class="tooltip-help">?<span class="tooltip-help-text">Указываются сведения о договоре хранения ценностей в индивидуальном банковском сейфе (ячейке) и наименование кредитной организации.</span></span>
+                                    </label>
+                                    <input
+                                        :id="'type-money-address-' + index"
+                                        type="text"
+                                        name="documentInfo[moneyList][address]"
+                                        placeholder="Место нахождения/место хранения (адрес)"
+                                        v-model.trim="item.address"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col col-2">
+                                <div class="field">
+                                    <label :for="'type-money-info-' + index">
+                                        Сведения о залоге и залогодержателе
+                                        <span class="tooltip-help">?<span class="tooltip-help-text">Указываются сведения о договоре залога, иной сделке, на основании которой возникает залог в силу закона, а также наименование юридического лица или фамилия, имя и отчество (последнее – при наличии) физического лица, в залоге у которого находится имущество.</span></span>
+                                    </label>
+                                    <input
+                                        :id="'type-money-info-' + index"
+                                        type="text"
+                                        name="documentInfo[moneyList][info]"
+                                        placeholder="Сведения о залоге и залогодержателе"
+                                        v-model.trim="item.info"
+                                    />
+                                </div>
+                            </div>
                         </div>
+                        <p><a href="#" @click.prevent="addMoneyList">Добавить</a></p>
                         <div class="row row-wrap row-space">
                             <div class="col" :class="{'col-2': !loading}">
                                 <div class="field">
@@ -475,7 +554,7 @@ import Loader from '../../components/Loader'
 import { mapGetters } from 'vuex'
 
 export default {
-    name: 'DocumentProperty',
+    name: 'documentInfo',
     components: {
         Loader
     },
@@ -486,16 +565,18 @@ export default {
     },
     mounted() {
         this.currentLogin = this.$store.getters.getUsername
-        /*this.$store.dispatch("infoDocumentPassport", this.currentLogin)
+        this.$store.dispatch("infoDocumentInfo", { login: this.currentLogin, type: this.type })
             .then((response) => {
                 if (response.status === 200) {
                     this.id = response.data.id || ''
+                    this.documentInfo = JSON.parse(response.data.documentInfo)
                 }
-            })*/
+            })
     },
     data: () => ({
         id: 0,
-        documentProperty: {
+        type: 'property',
+        documentInfo: {
             notMovableList: [],
             movableList: [],
             billList: [],
@@ -510,13 +591,25 @@ export default {
             this.message = ''
 
             const formData = {
-                id: this.id
+                id: this.id,
+                type: this.type,
+                documentInfo: this.documentInfo
             }
 
-            console.log(formData)
+            await this.$store.dispatch('addDocumentInfo', formData)
+                .then((response) => {
+                    if (response.status === 202)
+                        this.message = response.data
+
+                    if (response.status === 200)
+                        this.$router.push('/profile')
+                })
+                .catch((error) => {
+                    this.message = error.message
+                })
         },
         addNotMovable: function() {
-            this.documentProperty.notMovableList.push({
+            this.documentInfo.notMovableList.push({
                 type: 0,
                 title: '',
                 category: '',
@@ -527,7 +620,7 @@ export default {
             })
         },
         addMovable: function() {
-            this.documentProperty.movableList.push({
+            this.documentInfo.movableList.push({
                 type: 0,
                 title: '',
                 number: '',
@@ -538,7 +631,7 @@ export default {
             })
         },
         addBill: function() {
-            this.documentProperty.billList.push({
+            this.documentInfo.billList.push({
                 title: '',
                 currency: '',
                 dateOpen: '',
@@ -546,7 +639,7 @@ export default {
             })
         },
         addSecurities: function() {
-            this.documentProperty.securitiesList.push({
+            this.documentInfo.securitiesList.push({
                 title: '',
                 address: '',
                 capital: '',
@@ -555,7 +648,7 @@ export default {
             })
         },
         addOtherSecuritiesList: function() {
-            this.documentProperty.otherSecuritiesList.push({
+            this.documentInfo.otherSecuritiesList.push({
                 title: '',
                 person: '',
                 volume: '',
@@ -564,7 +657,7 @@ export default {
             })
         },
         addMoneyList: function() {
-            this.documentProperty.moneyList.push({
+            this.documentInfo.moneyList.push({
                 type: '',
                 title: '',
                 cost: '',
